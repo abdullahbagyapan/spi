@@ -44,6 +44,17 @@ void SPI_MasterTransmit(uint8_t ui8Data) {
     SPDR = ui8Data;
 
     // Wait for transmission complete
-    while(!(SPSR & (1<<SPIF)));
+    while(!(SPSR & _BV(SPIF)));
+
+}
+
+
+
+uint8_t SPI_MasterReceive() {
+
+    // Wait for reception complete
+    while(!(SPSR & _BV(SPIF)));
+
+    return SPDR;
 
 }
