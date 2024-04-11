@@ -35,3 +35,15 @@ void SPI_Init() {
     // TODO: Set Clock Polarity and Clock Phase
     
 }
+
+
+
+void SPI_MasterTransmit(uint8_t ui8Data) {
+
+    // Start transmission
+    SPDR = ui8Data;
+
+    // Wait for transmission complete
+    while(!(SPSR & (1<<SPIF)));
+
+}
