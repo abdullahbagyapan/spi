@@ -32,7 +32,8 @@ void SPI_Init() {
     // Enable SPI, Master, set clock rate F_CPU / 16
     SPCR = _BV(SPE) | _BV(MSTR) | _BV(SPR0);
 
-    // TODO: Set Clock Polarity and Clock Phase
+    // Set Clock Polarity and Clock Phase
+    SPCR &= ~_BV(CPOL) | ~_BV(CPHA);
     
 }
 
