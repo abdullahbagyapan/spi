@@ -21,7 +21,7 @@
 
  @author  Abdullah Bagyapan
 
- @date    11/04/2024
+ @date    14/04/2024
 
  @details Initialize SPI as a master
 
@@ -29,7 +29,23 @@
 
  @return  None
 */
-void SPI_Init();
+void SPI_MasterInit();
+
+
+/*
+ @brief:  Initialize SPI system
+
+ @author  Abdullah Bagyapan
+
+ @date    14/04/2024
+
+ @details Initialize SPI as a slave
+
+ @param   None
+
+ @return  None
+*/
+void SPI_SlaveInit();
 
 
 
@@ -46,7 +62,7 @@ void SPI_Init();
 
  @return  None
 */
-uint8_t SPI_MasterReceive();
+uint8_t SPI_Receive();
 
 
 
@@ -63,4 +79,4 @@ uint8_t SPI_MasterReceive();
 
  @return  None
 */
-void SPI_MasterTransmit(uint8_t ui8Data);
+void SPI_Transmit(uint8_t ui8Data);

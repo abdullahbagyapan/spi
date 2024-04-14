@@ -20,7 +20,7 @@
 /*================================== Functions ==================================*/
 
 
-void SPI_Init() {
+void SPI_MasterInit() {
 
     // Enable SPI module
     PRR &= ~_BV(PRSPI);
@@ -38,8 +38,22 @@ void SPI_Init() {
 }
 
 
+void SPI_SlaveInit() {
 
-void SPI_MasterTransmit(uint8_t ui8Data) {
+    // Enable SPI module
+    PRR &= ~_BV(PRSPI);
+
+    // @note: Arduino UNO's default SPI I/O ports are PORTB
+    // Set MISO output, all others input
+    DDRB = _BV(DDB4);
+
+    // Enable SPI
+    SPCR = _BV(SPE);
+
+}
+
+
+void SPI_Transmit(uint8_t ui8Data) {
 
     // Start transmission
     SPDR = ui8Data;
@@ -51,7 +65,7 @@ void SPI_MasterTransmit(uint8_t ui8Data) {
 
 
 
-uint8_t SPI_MasterReceive() {
+uint8_t SPI_Receive() {
 
     // Wait for reception complete
     while(!(SPSR & _BV(SPIF)));
