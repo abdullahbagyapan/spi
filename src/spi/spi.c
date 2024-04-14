@@ -53,11 +53,11 @@ static void _SPI_TX_Start(void) {
 
     ui8Data = SPI_RingBufferGet(&_spi_tx_ring_buffer);
 
-    // Wait for transmission complete
-    while(!(SPSR & _BV(SPIF)));
-
     // Start transmission
     SPDR = ui8Data;
+
+    // Wait for transmission complete
+    while(!(SPSR & _BV(SPIF)));
 
 }
 
