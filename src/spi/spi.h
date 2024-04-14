@@ -75,7 +75,7 @@ void SPI_SlaveInit();
 
  @return  None
 */
-uint8_t SPI_Receive();
+uint8_t SPI_GetChar();
 
 
 
@@ -92,7 +92,24 @@ uint8_t SPI_Receive();
 
  @return  None
 */
-void SPI_Transmit(uint8_t ui8Data);
+void SPI_PutChar(uint8_t ui8Data);
+
+
+
+/*
+ @brief:  Transmit string
+
+ @author  Abdullah Bagyapan
+
+ @date    14/04/2024
+
+ @details Transmit data to slave
+
+ @param   None
+
+ @return  None
+*/
+void SPI_PutString(uint8_t *ui8pData);
 
 
 

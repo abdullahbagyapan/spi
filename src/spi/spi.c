@@ -30,6 +30,42 @@ static struct SPI_RING_BUFFER _spi_rx_ring_buffer = {.ui8Head = 0, .ui8Tail = 0}
 /*================================== Functions ==================================*/
 
 
+
+/************ Private Functions ************/
+
+
+/*
+ @brief:  Start SPI transmission
+
+ @author  Abdullah Bagyapan
+
+ @date    14/04/2024
+
+ @param   None
+
+ @details Get data from tx ring buffer, then put it into TX register
+
+ @return  None
+*/
+static void _SPI_TX_Start(void) {
+
+    uint8_t ui8Data;
+
+    ui8Data = SPI_RingBufferGet(&_spi_tx_ring_buffer);
+
+    // Wait for transmission complete
+    while(!(SPSR & _BV(SPIF)));
+
+    // Start transmission
+    SPDR = ui8Data;
+
+}
+
+
+/************ Public Functions ************/
+
+
+
 void SPI_MasterInit() {
 
     // Enable SPI module
@@ -63,19 +99,35 @@ void SPI_SlaveInit() {
 }
 
 
-void SPI_Transmit(uint8_t ui8Data) {
+void SPI_PutChar(uint8_t ui8Data) {
 
-    // Start transmission
-    SPDR = ui8Data;
+    const uint8_t ui8IsTXOngoing = !SPI_RingBufferEmpty(&_spi_tx_ring_buffer);
 
-    // Wait for transmission complete
-    while(!(SPSR & _BV(SPIF)));
+    SPI_RingBufferPut(&_spi_tx_ring_buffer,ui8Data);
+
+    // if transmit is not happening, start transmitting
+    if (!ui8IsTXOngoing) {
+
+        _SPI_TX_Start();
+    }
 
 }
 
 
+void SPI_PutString(uint8_t *ui8pData) {
 
-uint8_t SPI_Receive() {
+    // Iterate until string termination character('\0')
+    while (*ui8pData != '\0') {
+
+        SPI_PutChar(*ui8pData);
+
+        ui8pData++;
+    }
+
+}
+
+
+uint8_t SPI_GetChar() {
 
     // Wait for reception complete
     while(!(SPSR & _BV(SPIF)));
