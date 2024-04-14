@@ -22,20 +22,20 @@
 void LED_Init(void) {
 
     // Set Data Direction Register to output
-    DDRD |= _BV(DDD7);
+    LED_DDR |= _BV(LED_DDR_PIN);
 
 }
 
 
 void LED_On(void) {
 
-    PORTD |= _BV(PORTD7);
+    LED_PORT |= _BV(LED_PORT_PIN);
 
 }
 
 
 void LED_Off(void) {
 
-    PORTD &= ~_BV(PORTD7);
+    LED_PORT &= ~_BV(LED_PORT_PIN);
 
 }

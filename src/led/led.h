@@ -5,6 +5,15 @@
 */
 
 
+/*================================== Defined Variables ==================================*/
+
+
+#define LED_PORT                PORTD
+#define LED_PORT_PIN            PORTD7
+
+#define LED_DDR                 DDRD
+#define LED_DDR_PIN             DDD7
+
 
 /*================================== Functions ==================================*/
 
