@@ -30,7 +30,7 @@ void SPI_MasterInit() {
 
     // @note: Arduino UNO's default SPI I/O ports are PORTB
     // Set MOSI and SCK as output, all others as input
-    DDRB = _BV(DDB3) | _BV(DDB5);
+    DDRB = _BV(SPI_MOSI_PIN) | _BV(SPI_SCK_PIN);
 
     // Enable SPI, Master, set clock rate F_CPU / 16
     SPCR = _BV(SPE) | _BV(MSTR) | _BV(SPR0);
@@ -40,6 +40,7 @@ void SPI_MasterInit() {
 
     // Set chip select HIGH
     PORTB |=  _BV(SPI_CS_PIN);
+    
     
 }
 

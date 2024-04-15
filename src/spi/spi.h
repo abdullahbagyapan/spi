@@ -12,6 +12,21 @@
 #include <stdint.h>
 
 
+// AVR libraries
+#include <avr/io.h>
+
+
+
+/*================================== Defined Variables ==================================*/
+
+
+// SPI pin ports
+#define SPI_SCK_PIN             PORTB5
+#define SPI_MISO_PIN            PORTB4
+#define SPI_MOSI_PIN            PORTB3
+#define SPI_CS_PIN              PORTB2
+
+
 
 /*================================== Functions ==================================*/
 
