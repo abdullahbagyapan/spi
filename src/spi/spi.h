@@ -66,6 +66,36 @@ void SPI_SlaveInit();
 
 
 /*
+ @brief:  Set CS pin low
+
+ @author  Abdullah Bagyapan
+
+ @date    15/04/2024
+
+ @param   None
+
+ @return  None
+*/
+void SPI_BeginTransaction();
+
+
+
+/*
+ @brief:  Set CS pin high
+
+ @author  Abdullah Bagyapan
+
+ @date    15/04/2024
+
+ @param   None
+
+ @return  None
+*/
+void SPI_EndTransaction();
+
+
+
+/*
  @brief:  Receive data
 
  @author  Abdullah Bagyapan

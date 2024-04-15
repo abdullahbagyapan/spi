@@ -60,6 +60,22 @@ void SPI_SlaveInit() {
 }
 
 
+void SPI_BeginTransaction() {
+
+    // Set chip select LOW
+    PORTB &=  ~_BV(SPI_CS_PIN);
+    
+}
+
+
+void SPI_EndTransaction() {
+
+    // Set chip select HIGH
+    PORTB |=  _BV(SPI_CS_PIN);
+    
+}
+
+
 void SPI_PutChar(uint8_t ui8Data) {
 
     // Start transmission
