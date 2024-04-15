@@ -11,9 +11,6 @@
 // Module's own header
 #include "spi.h"
 
-// AVR libraries
-#include <avr/interrupt.h>
-
 // Standart libraries
 #include <stdint.h>
 
