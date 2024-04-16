@@ -35,6 +35,9 @@ void SPI_MasterInit() {
     // Set Clock Polarity and Clock Phase
     SPCR &= ~_BV(CPOL) | ~_BV(CPHA);
 
+    // Set data order as transmit MSB first
+    SPCR &= _BV(DORD);
+
     // Set chip select HIGH
     PORTB |=  _BV(SPI_CS_PIN);
     
