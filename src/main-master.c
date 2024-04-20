@@ -2,6 +2,7 @@
 #include "led.h"
 #include "clock.h"
 
+#include "avr/interrupt.h"
 
 
 int main(void) {
@@ -9,6 +10,8 @@ int main(void) {
     CLOCK_Init();
     LED_Init();
     SPI_MasterInit();
+
+    sei();
 
     SPI_BeginTransaction();
 
