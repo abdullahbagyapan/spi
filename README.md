@@ -1,1 +1,1 @@
-# SPI (Serial Peripheral Interface) Driver From Scratch
+# SPI (Serial Peripheral Interface) Communication Between Two Arduino's
