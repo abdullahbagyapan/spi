@@ -7,11 +7,14 @@ int main(void) {
 
     SPI_MasterInit();
 
-    SPI_BeginTransaction();
 
     while (1) {
 
+        SPI_BeginTransaction();
+        
         SPI_PutChar('A');
+        
+        SPI_EndTransaction();
             
     }
 
