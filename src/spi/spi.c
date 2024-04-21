@@ -84,12 +84,17 @@ void SPI_EndTransaction() {
 
 void SPI_PutChar(uint8_t ui8Data) {
 
+    // Begin transaction phase
+    SPI_BeginTransaction();
+
     // Start transmission
     SPDR = ui8Data;
 
     // Wait for transmission complete
     while(!(SPSR & _BV(SPIF)));
 
+    // End transaction phase
+    SPI_EndTransaction();
 }
 
 
