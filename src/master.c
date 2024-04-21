@@ -7,15 +7,12 @@ int main(void) {
 
     SPI_MasterInit();
 
+    char *pMessage = "Hello World!\r\n"; 
 
     while (1) {
 
-        SPI_BeginTransaction();
-        
-        SPI_PutChar('A');
-        
-        SPI_EndTransaction();
-            
+        SPI_PutString(pMessage);
+
     }
 
     return 0;
