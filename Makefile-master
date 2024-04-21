@@ -15,7 +15,7 @@
 
 # parameters (change this stuff accordingly)
 # project name
-PRJ = src/main-master
+PRJ = src/master
 # avr mcu
 MCU = atmega328p
 # mcu clock frequency
