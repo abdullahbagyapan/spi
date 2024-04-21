@@ -26,8 +26,8 @@ void SPI_MasterInit() {
     PRR &= ~_BV(PRSPI);
 
     // @note: Arduino UNO's default SPI I/O ports are PORTB
-    // Set MOSI and SCK as output, all others as input
-    DDRB = _BV(SPI_MOSI_PIN) | _BV(SPI_SCK_PIN);
+    // Set MOSI, SCK and CS as output, all others as input
+    DDRB = _BV(SPI_MOSI_PIN) | _BV(SPI_SCK_PIN) | _BV(SPI_CS_PIN);
 
     // Enable SPI, Master, set clock rate F_CPU / 16
     SPCR = _BV(SPE) | _BV(MSTR) | _BV(SPR0);
@@ -36,7 +36,7 @@ void SPI_MasterInit() {
     SPCR &= ~_BV(CPOL) | ~_BV(CPHA);
 
     // Set data order as transmit MSB first
-    SPCR &= _BV(DORD);
+    SPCR &= ~_BV(DORD);
 
     // Set chip select HIGH
     PORTB |=  _BV(SPI_CS_PIN);
@@ -54,8 +54,14 @@ void SPI_SlaveInit() {
     // Set MISO output, all others input
     DDRB = _BV(DDB4);
 
+    // Set Clock Polarity and Clock Phase
+    SPCR &= ~_BV(CPOL) | ~_BV(CPHA);
+
+    // Set data order as transmit MSB first
+    SPCR &= ~_BV(DORD);
+
     // Enable SPI
-    SPCR = _BV(SPE);
+    SPCR |= _BV(SPE);
 
 }
 
