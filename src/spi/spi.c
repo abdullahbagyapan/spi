@@ -98,14 +98,14 @@ void SPI_PutChar(uint8_t ui8Data) {
 }
 
 
-void SPI_PutString(uint8_t *ui8pData) {
+void SPI_PutString(char *pMessage) {
 
     // Iterate until string termination character('\0')
-    while (*ui8pData != '\0') {
+    while (*pMessage != '\0') {
 
-        SPI_PutChar(*ui8pData);
+        SPI_PutChar(*pMessage);
 
-        ui8pData++;
+        pMessage++;
     }
 
 }

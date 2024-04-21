@@ -142,4 +142,4 @@ void SPI_PutChar(uint8_t ui8Data);
 
  @return  None
 */
-void SPI_PutString(uint8_t *ui8pData);
+void SPI_PutString(char *pMessage);
